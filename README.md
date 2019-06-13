@@ -34,3 +34,17 @@ if you want you can use either one of them if you want to leave any one argument
 
 5. Please do not forget to place the ip proxies to the ip_proxies.txt file.
 
+6. Install Local Persist Volume Plugin for Docker (only works on ubuntu systems)
+
+	curl -fsSL https://raw.githubusercontent.com/CWSpear/local-persist/master/scripts/install.sh | sudo bash
+
+USAGE:
+
+Then to use, you can create a volume with this plugin (this example will be for a shared folder for images):
+
+	docker volume create -d local-persist -o mountpoint=/data/images --name=images
+Then if you create a container, you can connect it to this Volume:
+
+	docker run -d -v images:/path/to/images/on/one/ one
+	docker run -d -v images:/path/to/images/on/two/ two
+# etc
