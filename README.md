@@ -38,7 +38,7 @@ if you want you can use either one of them if you want to leave any one argument
 
 	curl -fsSL https://raw.githubusercontent.com/CWSpear/local-persist/master/scripts/install.sh | sudo bash
 
-USAGE:
+# USAGE: #
 
 Then to use, you can create a volume with this plugin (this example will be for a shared folder for images):
 
@@ -47,4 +47,3 @@ Then if you create a container, you can connect it to this Volume:
 
 	docker run -d -v images:/path/to/images/on/one/ one
 	docker run -d -v images:/path/to/images/on/two/ two
-# etc
