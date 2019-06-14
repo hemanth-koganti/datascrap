@@ -38,7 +38,7 @@ if you want you can use either one of them if you want to leave any one argument
 
 	curl -fsSL https://raw.githubusercontent.com/CWSpear/local-persist/master/scripts/install.sh | sudo bash
 
-# USAGE: #
+# USAGE OF LOCAL-PERSIST PLUGIN: #
 
 Then to use, you can create a volume with this plugin (this example will be for a shared folder for images):
 
@@ -47,3 +47,21 @@ Then if you create a container, you can connect it to this Volume:
 
 	docker run -d -v images:/path/to/images/on/one/ one
 	docker run -d -v images:/path/to/images/on/two/ two
+
+# BUILDING #
+
+After installation of the necessary dependencies follow this to build and run a container
+
+create an image of the files:
+	sudo docker build -t indeed .
+
+Create a local persist volume: 
+
+	sudo docker volume create -d local-persist -o mountpoint=/home/ubuntu/data --name=volvol
+here volvol is the name of the volume creaated and mountpoint is the local directory position
+
+Creating the container and giving arguments:
+
+	docker run -d -v volvol:/usr/src/app indeed 'Ruby on Rails' California
+
+Resultant data will be found in ../data/dataindeed.csv
